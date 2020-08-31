@@ -6,7 +6,6 @@ import (
 )
 
 func main() {
-
 	result := util.Cal(12, 12, '+')
 	fmt.Println("result=", result)
 }
