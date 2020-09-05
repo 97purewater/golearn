@@ -18,7 +18,6 @@ func sayhelloName(w http.ResponseWriter, r *http.Request) {
 	for k, v := range r.Form {
 		fmt.Println("key:", k)
 		fmt.Println("val:", strings.Join(v, ""))
-	}
 	fmt.Fprintf(w, "Hello astaxie!") //这个写入到w的是输出到客户端的
 }
 
@@ -36,7 +35,8 @@ func login(w http.ResponseWriter, r *http.Request) {
 		//请求的是登陆数据，那么执行登陆的逻辑判断
 		fmt.Println("username:", r.FormValue("username"))
 		fmt.Println("password:", r.FormValue("password"))
-		// fmt.Println("username:", r.Form["username"])
+		template.HTMLEscape(w, []byte(r.Form.Get("username"))) //输出到客户端
+		fmt.Println("username:", r.Form.Get("username"))
 		// fmt.Println("password:", r.Form["password"])
 	}
 }
